@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96eae9df-e586-4959-b5a9-3d4ecd63e095" name="Default Changelist" comment="多终端编程提交">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/literature/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/litera.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/litera.html" afterDir="false" />
-    </list>
+    <list default="true" id="96eae9df-e586-4959-b5a9-3d4ecd63e095" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +66,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -236,7 +231,7 @@
       <workItem from="1603636793295" duration="685000" />
       <workItem from="1603639271238" duration="2108000" />
       <workItem from="1603699498679" duration="931000" />
-      <workItem from="1603700476810" duration="3233000" />
+      <workItem from="1603700476810" duration="3263000" />
     </task>
     <task id="LOCAL-00001" summary="多终端编程提交">
       <created>1603637131994</created>
@@ -273,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603646768120</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="多终端编程提交">
+      <created>1603704224273</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603704224274</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,41 +322,41 @@
     <state x="955" y="420" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1603335621051" />
     <state x="627" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.962@0.23.1680.962" timestamp="1603703256305" />
     <state x="955" y="417" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1352@0.23.2560.1352" timestamp="1603631476321" />
-    <state x="239" y="42" key="CommitChangelistDialog2" timestamp="1603646767852">
+    <state x="239" y="42" key="CommitChangelistDialog2" timestamp="1603704223968">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
-    <state x="239" y="42" key="CommitChangelistDialog2/0.23.1680.962@0.23.1680.962" timestamp="1603646767852" />
+    <state x="239" y="42" key="CommitChangelistDialog2/0.23.1680.962@0.23.1680.962" timestamp="1603704223968" />
     <state x="47" y="108" key="DiffContextDialog" timestamp="1603645539674">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state x="47" y="108" key="DiffContextDialog/0.23.1680.962@0.23.1680.962" timestamp="1603645539674" />
-    <state width="1628" height="277" key="GridCell.Tab.0.bottom" timestamp="1603702747825">
+    <state width="1628" height="277" key="GridCell.Tab.0.bottom" timestamp="1603704226713">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state width="1628" height="252" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1603618213496" />
     <state width="1628" height="252" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1603629934225" />
-    <state width="1628" height="277" key="GridCell.Tab.0.bottom/0.23.1680.962@0.23.1680.962" timestamp="1603702747825" />
+    <state width="1628" height="277" key="GridCell.Tab.0.bottom/0.23.1680.962@0.23.1680.962" timestamp="1603704226713" />
     <state width="1600" height="262" key="GridCell.Tab.0.bottom/0.23.2560.1352@0.23.2560.1352" timestamp="1603634743922" />
-    <state width="1628" height="277" key="GridCell.Tab.0.center" timestamp="1603702747825">
+    <state width="1628" height="277" key="GridCell.Tab.0.center" timestamp="1603704226712">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state width="1628" height="252" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1603618213495" />
     <state width="1628" height="252" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1603629934223" />
-    <state width="1628" height="277" key="GridCell.Tab.0.center/0.23.1680.962@0.23.1680.962" timestamp="1603702747825" />
+    <state width="1628" height="277" key="GridCell.Tab.0.center/0.23.1680.962@0.23.1680.962" timestamp="1603704226712" />
     <state width="1600" height="262" key="GridCell.Tab.0.center/0.23.2560.1352@0.23.2560.1352" timestamp="1603634743922" />
-    <state width="1628" height="277" key="GridCell.Tab.0.left" timestamp="1603702747824">
+    <state width="1628" height="277" key="GridCell.Tab.0.left" timestamp="1603704226711">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state width="1628" height="252" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1603618213494" />
     <state width="1628" height="252" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1603629934222" />
-    <state width="1628" height="277" key="GridCell.Tab.0.left/0.23.1680.962@0.23.1680.962" timestamp="1603702747824" />
+    <state width="1628" height="277" key="GridCell.Tab.0.left/0.23.1680.962@0.23.1680.962" timestamp="1603704226711" />
     <state width="1600" height="262" key="GridCell.Tab.0.left/0.23.2560.1352@0.23.2560.1352" timestamp="1603634743921" />
-    <state width="1628" height="277" key="GridCell.Tab.0.right" timestamp="1603702747825">
+    <state width="1628" height="277" key="GridCell.Tab.0.right" timestamp="1603704226712">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state width="1628" height="252" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603618213496" />
     <state width="1628" height="252" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1603629934224" />
-    <state width="1628" height="277" key="GridCell.Tab.0.right/0.23.1680.962@0.23.1680.962" timestamp="1603702747825" />
+    <state width="1628" height="277" key="GridCell.Tab.0.right/0.23.1680.962@0.23.1680.962" timestamp="1603704226712" />
     <state width="1600" height="262" key="GridCell.Tab.0.right/0.23.2560.1352@0.23.2560.1352" timestamp="1603634743922" />
     <state width="1628" height="277" key="GridCell.Tab.1.bottom" timestamp="1603700783076">
       <screen x="0" y="23" width="1680" height="962" />
@@ -426,6 +428,10 @@
       <screen x="0" y="23" width="1680" height="962" />
     </state>
     <state x="354" y="183" key="Vcs.Push.Dialog.v2/0.23.1680.962@0.23.1680.962" timestamp="1603646913662" />
+    <state x="602" y="410" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603719839997">
+      <screen x="0" y="23" width="1680" height="962" />
+    </state>
+    <state x="602" y="410" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.962@0.23.1680.962" timestamp="1603719839997" />
     <state x="624" y="354" key="git4idea.rebase.GitRebaseDialog" timestamp="1603646035160">
       <screen x="0" y="23" width="1680" height="962" />
     </state>
