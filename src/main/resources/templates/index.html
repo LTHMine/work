@@ -81,9 +81,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">章节</label>
                     <div class="layui-input-inline">
+
                         <select id="workL" name="workL">
-                            <option value="4">第四章作业</option>
+                            <option th:each="work_s:${work_list}" th:value="${work_s.id}" th:text="${work_s.homework}"></option>
                         </select>
+
                     </div>
 
 

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -92,10 +93,13 @@ public class indexController {
             stu_id.add(student.getId());
             stu_name.add(student.getName());
         }
+        List<Homew> work_list = homewService.findByCate(1);//分类为1，也就是python类型
+        Collections.reverse(work_list); //倒序
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("stuList",students);
         modelAndView.addObject("stu_idList",stu_id);
         modelAndView.addObject("stu_nameList",stu_name);
+        modelAndView.addObject("work_list",work_list);
         return modelAndView;
     }
 
@@ -109,8 +113,11 @@ public class indexController {
             stu_id.add(student.getId());
             stu_name.add(student.getName());
         }
+        List<Homew> work_list = homewService.findByCate(2);//分类为2 也就是web类型
+        Collections.reverse(work_list); //倒序
         ModelAndView modelAndView = new ModelAndView("webWork");
         modelAndView.addObject("stuList",students);
+        modelAndView.addObject("work_list",work_list);
         modelAndView.addObject("stu_idList",stu_id);
         modelAndView.addObject("stu_nameList",stu_name);
         return modelAndView;
@@ -124,16 +131,6 @@ public class indexController {
         Student stuById = studentService.findById(Id);
         return stuById;
     }
-
-//    @GetMapping("/findStuName")
-//    @ResponseBody
-//    public Student findByName(HttpServletRequest request){
-//        String name= request.getParameter("data");
-//        System.out.println(name);
-//        Student stuByName = studentService.findByName(name);
-//        return stuByName;
-//    }
-
 
     @PostMapping("/upload")
     @ResponseBody
@@ -157,12 +154,17 @@ public class indexController {
             String strh = oldfilename.substring( oldfilename.indexOf("."),oldfilename.length());
             Student stu = studentService.findById(stu_idd);
             String filename = stu_idd+"-"+stu.getName()+strh; //重命名
+            Homew homew_name = homewService.findById(workL, category);
 
-            String leftPath = "C:\\第四次作业";  //服务器环境
-//            String leftPath = "C:\\第四次作业web";  //本地环境
-//            String leftPath = "/Users/wanan/Desktop";  //本地环境
+//            String leftPath = "C:\\"+homew_name.getHomework();  //服务器环境
+//            String leftPath = "C:\\"+homew_name.getHomework();  //本地环境
+            String leftPath = "/Users/wanan/Desktop/"+homew_name.getHomework();  //本地环境
+
 
             File file = new File(leftPath, filename);
+            if(!file.exists()){//不存在则创建路径
+                file.mkdirs();
+            }
             String path=file.getPath(); //路径
             twork.setWorkPath(path);
             twork.setWorkName(filename);
@@ -212,6 +214,7 @@ public class indexController {
         Homew works = homewService.findById(id, category);
         String url=works.getHome_path();
         String name=works.getHomework();
+        name = name + url.substring( url.indexOf("."),url.length());
         File file=new File(url);
         response.reset();
         response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(name, "UTF-8"));

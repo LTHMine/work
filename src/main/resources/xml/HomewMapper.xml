@@ -14,4 +14,9 @@
     <select id="findById" resultType="com.lth.work.pojo.Homew">
         select * from homework where id = #{id} and category=#{category}
     </select>
+
+    <select id="findByCate" resultType="com.lth.work.pojo.Homew">
+        select * from homework where category=#{category}
+    </select>
+
 </mapper>

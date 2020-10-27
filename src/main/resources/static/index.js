@@ -60,27 +60,11 @@ layui.use('form', function(){
                         }
                     }
                     layui.form.render('select');  //layui更新select
-                    // layui.form.render();
                 });
             }
         });
 
     });
-    //与文件上传有冲突，舍弃
-    // form.on('submit(formDemo)', function(data){
-    //     if (file_sta.value=="0"){
-    //         console.log("123123");
-    //         layer.alert('请上传你的作业！', {
-    //             skin: 'layui-layer-lan'
-    //             ,closeBtn: 0
-    //             ,anim: 4 //动画类型
-    //         });
-    //         return false;
-    //     }
-    //     layer.alert('正在上传');
-    //     with(new XMLHttpRequest())
-    //     return true;
-    // });
 });
 
 let indexa; //存储文件index
@@ -285,7 +269,7 @@ function fle(url) {
     if(url==1)
         url="index";
     // window.location.reload("http://localhost:8080/"+url);  //本地
-    window.location.replace("http://81.69.242.200:8080/"+url);  //服务器
+    window.location.replace("http://LTHMine.club/"+url);  //服务器
     // window.location.reload("http://192.168.0.101:8080/"+url);   //台式
 }
 function sb() {
