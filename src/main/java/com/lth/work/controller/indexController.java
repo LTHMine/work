@@ -156,9 +156,9 @@ public class indexController {
             String filename = stu_idd+"-"+stu.getName()+strh; //重命名
             Homew homew_name = homewService.findById(workL, category);
 
-//            String leftPath = "C:\\"+homew_name.getHomework();  //服务器环境
+            String leftPath = "C:\\"+homew_name.getHomework();  //服务器环境
 //            String leftPath = "C:\\"+homew_name.getHomework();  //本地环境
-            String leftPath = "/Users/wanan/Desktop/"+homew_name.getHomework();  //本地环境
+//            String leftPath = "/Users/wanan/Desktop/"+homew_name.getHomework();  //本地环境
 
 
             File file = new File(leftPath, filename);
