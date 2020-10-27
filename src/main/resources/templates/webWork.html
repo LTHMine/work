@@ -43,7 +43,7 @@
                     <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
                     <li class=""><a href="/index">Python 作业</a></li>
                     <li class=""><a href="/webWork">Web 作业</a></li>
-                    <li class=""><a href="#">待定</a></li>
+                    <li class=""><a href="/workDown">作业(资源)下载</a></li>
                 </ul>
             </div>
             <!--        作业表单-->
@@ -81,21 +81,23 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">章节</label>
                         <div class="layui-input-inline">
+
                             <select id="workL" name="workL">
-                                <option value="5">第四章作业</option>  <!-- workL的值，注意这个地方不能重复 -->
+                                <option th:each="work_s:${work_list}" th:value="${work_s.id}" th:text="${work_s.homework}"></option>
                             </select>
+
                         </div>
 
 
-                        <label class="layui-form-label">作业下载</label>
-                        <div class="layui-input-inline">
-                            <table class="layui-hide" id="file" lay-filter="file">
-                                <button id="down" type="button" class="layui-btn"
-                                        onclick="downFile()" >  <!--此处需要修改成服务器直接下载-->
-                                    <i class="layui-icon">&#xe601;</i>下载作业
-                                </button>
-                            </table>
-                        </div>
+<!--                        <label class="layui-form-label">作业下载</label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <table class="layui-hide" id="file" lay-filter="file">-->
+<!--                                <button id="down" type="button" class="layui-btn"-->
+<!--                                        onclick="downFile()" >  &lt;!&ndash;此处需要修改成服务器直接下载&ndash;&gt;-->
+<!--                                    <i class="layui-icon">&#xe601;</i>下载作业-->
+<!--                                </button>-->
+<!--                            </table>-->
+<!--                        </div>-->
 
 
                     </div>
