@@ -6,6 +6,8 @@ import com.lth.work.service.HomewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HomewServiceImpl implements HomewService {
     @Autowired
@@ -19,5 +21,10 @@ public class HomewServiceImpl implements HomewService {
     @Override
     public void updateHomew(Homew homew) {
         homewMapper.updateHomew(homew);
+    }
+
+    @Override
+    public List<Homew> findByCate(Integer category) {
+        return homewMapper.findByCate(category);
     }
 }
