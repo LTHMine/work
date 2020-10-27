@@ -89,7 +89,7 @@ layui.use('upload', function(){
                 , auto: false
                 , method: 'POST'
                 , accept: "file"
-                , exts: "doc|docx|pdf"
+                , exts: "doc|docx|pdf|zip|rar"
                 , bindAction: '#FormAction'
                 , data: {
                     "category": category.value,
