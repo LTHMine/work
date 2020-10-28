@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lth.work.mapper.TworkMapper">
+
+    <insert id="insert">
+        insert into Twork (workPath,workName,stuID,category,homework_id,beiz)
+        VALUES (#{workPath},#{workName},#{stuID},#{category},#{homework_id},#{beiz})
+    </insert>
+
+    <select id="findByStuID" resultType="com.lth.work.pojo.Twork"></select>
+    <select id="findByName" resultType="com.lth.work.pojo.Twork"></select>
+    <select id="findByCate" resultType="com.lth.work.pojo.Twork"></select>
+
+
+    <select id="findByidCateHome" resultType="com.lth.work.pojo.Twork">
+        select * from Twork where stuID=#{stuID} and category=#{category} and homework_id=#{workL} ;
+    </select>
+</mapper>

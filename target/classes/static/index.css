@@ -1,0 +1,57 @@
+
+li .CCSU-icon{
+    width:60%;
+    /*height: 60px;*/
+    position: relative;
+    left: 25px;
+    top:-2px;
+}
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.lthul{
+    background-color:#214E91;
+}
+.chuizhi{
+    text-align: center;
+    line-height: 42px;
+    margin-top: 20px;
+    background-color:#FFFFFF;
+    width: auto;
+    border-radius: 0px;
+}
+fieldset{
+    border: none;
+    padding: 0;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+fieldset legend {
+    /*width: 117px;*/
+    margin-left: 30px;
+    /*padding: 0 30px;*/
+    font-size: 22px;
+    font-weight: 300;
+}
+.stuname{
+    /*text-align: left;*/
+    /*padding-left: 0px;*/
+    width: 40px;
+}
+.beizhu{
+    width: 63%;
+}
+.jindu{
+    position: relative;
+    top: 10px;
+    width: 63%;
+}
+.upList{
+    width: 55.7%;
+    position: relative;
+    left: 110px;
+}

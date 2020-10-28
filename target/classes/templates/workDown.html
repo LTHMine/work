@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>作业下载</title>
+    <link rel="stylesheet" href="css/layui.css"  media="all">
+    <link rel="stylesheet" href="index.css"  media="all">
+</head>
+<body id="body" οnscrοll=SetCookie("scroll",body.scrollTop); οnlοad="scrollback();">
+<!--导航-->
+<header>
+    <ul class="layui-nav lthul" lay-filter="">
+        <li class="layui-nav-item"><a href="#"><img class="CCSU-icon" src="img/logo.jpg"></a></li>
+        <li class="layui-nav-item"><a href="#">计算机科学与应用数学学院</a></li>
+        <li class="layui-nav-item"><a href="#">软件1806班</a></li>
+        <li class="layui-nav-item layui-this"><a href="/index">作业</a></li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">功能菜单</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <dd><a href="/litera" >学习资料</a></dd>
+                <dd><a href="#">功能二</a></dd>
+                <dd><a href="#">功能三</a></dd>
+            </dl>
+        </li>
+    </ul>
+</header>
+
+
+<!--功能-->
+
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md2">
+            <ul class="layui-nav layui-nav-tree chuizhi" lay-filter="test">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class=""><a href="/index">Python 作业</a></li>
+                <li class=""><a href="/webWork">Web 作业</a></li>
+                <li class=""><a href="/workDown">作业(资源)下载</a></li>
+            </ul>
+        </div>
+        <div class="layui-col-md10">
+            <fieldset>
+                <legend>
+                    <span>作业下载</span>
+                </legend>
+            </fieldset>
+
+            <div class="layui-tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">课后作业</li>
+                    <li>用户管理</li>
+                    <li>权限分配</li>
+                    <li>商品管理</li>
+                    <li>订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <table id="work_home" lay-filter="work_home"></table>
+                    </div>
+                    <div class="layui-tab-item ">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                    <div class="layui-tab-item">内容4</div>
+                    <div class="layui-tab-item">内容5</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--<label class="layui-form-label">作业下载</label>-->
+<!--                    <div class="layui-input-inline">-->
+<!--                        <table class="layui-hide" id="file" lay-filter="file">-->
+<!--                           <button id="down" type="button" class="layui-btn" onclick="downFile()"     >-->
+<!--                            <i class="layui-icon">&#xe601;</i>下载作业-->
+<!--                            </button>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<script src="layui.js" charset="utf-8"></script>
+<script src="downFile.js" charset="utf-8"></script>
+</body>
+</html>

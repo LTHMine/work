@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/layui.css"  media="all">
+    <link rel="stylesheet" href="index.css"  media="all">
+</head>
+
+
+<body id="body" οnscrοll=SetCookie("scroll",body.scrollTop); οnlοad="scrollback();">
+<!--<a href="/literature/VM15.5/SN.txt"-->
+<!--   download="w3logo"-->
+<!--&gt;123123</a>-->
+<!--导航-->
+<header>
+<ul class="layui-nav lthul" lay-filter="">
+    <li class="layui-nav-item"><a href="#"><img class="CCSU-icon" src="img/logo.jpg"></a></li>
+    <li class="layui-nav-item"><a href="#">计算机科学与应用数学学院</a></li>
+    <li class="layui-nav-item"><a href="#">软件1806班</a></li>
+    <li class="layui-nav-item layui-this"><a href="/index">作业</a></li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">功能菜单</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/litera" >学习资料</a></dd>
+            <dd><a href="#">功能二</a></dd>
+            <dd><a href="#">功能三</a></dd>
+        </dl>
+    </li>
+</ul>
+
+</header>
+<!--导航结束-->
+
+<!--功能-->
+<div style="">
+<div class="layui-container">
+    <div class="layui-row">
+<!--        侧边栏-->
+        <div class="layui-col-md2">
+            <ul class="layui-nav layui-nav-tree chuizhi" lay-filter="test">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class=""><a href="/index">Python 作业</a></li>
+                <li class=""><a href="/webWork">Web 作业</a></li>
+                <li class=""><a href="/workDown">作业(资源)下载</a></li>
+            </ul>
+        </div>
+<!--        作业表单-->
+        <div class="layui-col-md10">
+            <fieldset>
+                <legend>
+                    <span>Python 作业</span>
+                </legend>
+            </fieldset>
+            <form target="hidden" id="form_s" lay-filter="test" enctype=multipart/form-data class="layui-form" method="post" action="/formSubmit">
+                <iframe name="hidden" style="display:none;"></iframe>
+                <input type="hidden" id="category" name="category" value="1"></input>
+                <input type="hidden" id="stu_idd" name="stu_idd" value="0"></input>
+                <input type="hidden" id="file_sta" name="file_sta" value="0"></input>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学号</label>
+                    <div class="layui-input-inline">
+                        <select id="stu_id" name="stu_id" lay-verify="required" lay-search lay-filter="stu_id" >
+                            <option></option>
+                            <option th:value="${stu_id}" th:each="stu_id:${stu_idList}" th:text="${{stu_id}}"></option>
+
+                        </select>
+                    </div>
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-inline">
+                        <select id="stu_name" name="stu_name" lay-verify="required" lay-search lay-filter="stu_name">
+                            <option></option>
+                            <option th:value="${stu_name.id}" th:each="stu_name:${stuList}" th:text="${{stu_name.name}}"></option>
+                        </select>
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">任选其一</div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">章节</label>
+                    <div class="layui-input-inline">
+
+                        <select id="workL" name="workL">
+                            <option th:each="work_s:${work_list}" th:value="${work_s.id}" th:text="${work_s.homework}"></option>
+                        </select>
+
+                    </div>
+
+
+<!--                    <label class="layui-form-label">作业下载</label>-->
+<!--                    <div class="layui-input-inline">-->
+<!--                        <table class="layui-hide" id="file" lay-filter="file">-->
+<!--                       <a href="/literature/第五章作业.docx" download="第五章作业.docx">-->
+<!--                           <button id="down" type="button" class="layui-btn"-->
+<!--                                 >-->
+<!--                            <i class="layui-icon">&#xe601;</i>下载作业-->
+
+<!--                            &lt;!&ndash;<a href="/literature/VM15.5/SN.txt"&ndash;&gt;-->
+<!--                            &lt;!&ndash;   download="w3logo"&ndash;&gt;-->
+<!--                            &lt;!&ndash;&gt;123123</a>&ndash;&gt;-->
+<!--                            </button>-->
+<!--                       </a>-->
+<!--                        </table>-->
+<!--                    </div>-->
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">作业难易度</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="difficulty" value="1" title="简单">
+                        <input type="radio" name="difficulty" value="2" title="正常" checked>
+                        <input type="radio" name="difficulty" value="3" title="难">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">上传</label>
+                    <div id="submitbtngroup"  class="layui-input-inline" style="width: auto;">
+<!--                        <button id="upl" lay-verify="" type="button"-->
+<!--                                class="layui-btn load" lay-data="{url: '/upload', accept: 'file', exts:'doc|docx|pdf' }" >-->
+<!--                            <i class="layui-icon">&#xe67c;</i>选择文件-->
+<!--                        </button>-->
+
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">也可拖拽选择文件</div>
+                </div>
+
+                <div class="layui-form-item upList">
+                    <div class="layui-card" style="border-color: #e6e6e6;border-width: 1px;border-style: solid;background-color: #fff;border-radius: 2px;">
+                        <div class="layui-card-header">已选择文件
+                        </div>
+                        <div class="layui-card-body" >
+                            <span id="filename" name="filename">未选择任何文件</span>
+                            <button type="button" onclick="setImgitemClick()"  id="delet_file" class="layui-btn layui-btn-sm layui-btn-danger" style="position: absolute;right: 4px;top: 6px;">删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea name="beiz" placeholder="请输入内容" class="layui-textarea beizhu"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+<!--                        <button lay-submit   id="FormAction" class="layui-btn"  lay-filter="formDemo">立即提交</button>-->
+                        <button type="button" id="FormAction" class="layui-btn" onclick="sub()" lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+<script src="layui.js" charset="utf-8"></script>
+<script src="index.js" charset="utf-8"></script>
+<script>
+
+</script>
+</body>
+
+</html>

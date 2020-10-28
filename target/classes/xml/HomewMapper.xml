@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lth.work.mapper.HomewMapper">
+
+    <update id="updateHomew">
+        UPDATE homework
+        SET homework=#{homework},category=#{category},home_status=#{home_status},home_path=#{home_path},
+        easy=#{easy}, normal=#{normal},difficulty=#{difficulty}
+        where id = #{id}
+    </update>
+
+    <select id="findById" resultType="com.lth.work.pojo.Homew">
+        select * from homework where id = #{id} and category=#{category}
+    </select>
+
+    <select id="findByCate" resultType="com.lth.work.pojo.Homew">
+        select * from homework where category=#{category}
+    </select>
+    <select id="findAll" resultType="com.lth.work.pojo.Homew">
+        select * from homework;
+    </select>
+
+</mapper>
