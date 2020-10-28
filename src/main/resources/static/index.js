@@ -1,4 +1,45 @@
 
+
+/**
+ * js动态加载js css文件,可以配置文件后辍，防止浏览器缓存
+ * @param {obj} config   加载资源配置
+ * @param {string} version  资源后辍配置
+ */
+function jsCssLoader(config,version) {
+    this.css = config.css;
+    this.scripts = config.scripts;
+    this.head = document.getElementsByTagName('head')[0];
+
+    this.load = function() {
+        this.loadCSS();
+        this.loadScript();
+    }
+    this.loadCSS = function() {
+        var that = this;
+        this.css.forEach(function(csslink) {
+            document.write(' ')
+        });
+    }
+    this.loadScript = function() {
+        var that = this;
+        this.scripts.forEach(function(scriptlink){
+            document.write('');
+        });
+    }
+    this.load();
+};
+jsCssLoader({
+    css: [
+        'index.css',
+    ],
+    scripts: [
+        'index.js',
+    ]
+},new Date().getTime());
+
+
+
+
 layui.use('element', function(){
     var element = layui.element;
     //…
@@ -79,7 +120,7 @@ layui.use('upload', function(){
     var workL = document.getElementById("workL");
     Init=function() {
         document.getElementById("submitbtngroup").innerHTML = '<button id="upl" lay-verify="" type="button"\n' +
-            '                                class="layui-btn load" lay-data="{url: \'/upload\', accept: \'file\', exts:\'doc|docx|pdf\' }" >\n' +
+            '                                class="layui-btn load" lay-data="{url: \'/upload\', accept: \'file\', exts:\'doc|docx|pdf|rar|zip\' }" >\n' +
             '                            <i class="layui-icon">&#xe67c;</i>选择文件\n' +
             '                        </button>';
 
@@ -87,6 +128,7 @@ layui.use('upload', function(){
             {
                 elem: '.load' //绑定
                 , auto: false
+                ,drag:false
                 , method: 'POST'
                 , accept: "file"
                 , exts: "doc|docx|pdf|zip|rar"
@@ -95,13 +137,9 @@ layui.use('upload', function(){
                     "category": category.value,
                     "stu_idd": stu_idd.value
                 }
-                ,size:20000
-                ,multiple:false
-                ,number:1
                 , choose: function (obj) {
                     // uploadRender.config.elem.next()[0].value='';
                     UPLOAD_FILES = obj.pushFile();
-                    console.log(obj);
                     uploadInst.reload({  //重要
                         data: {
                             "category": category.value,
