@@ -10,4 +10,5 @@ public interface HomewMapper {
     Homew findById(Integer id,Integer category);
     void updateHomew(Homew homew);
     List<Homew> findByCate(Integer category);
+    List<Homew> findAll();
 }

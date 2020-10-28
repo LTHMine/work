@@ -166,11 +166,11 @@ layui.use('upload', function(){
 
 
 
-
-function downFile() {
-    var workL = document.getElementById("workL");
-    window.location="/downFile?id="+workL.value+"&category="+category.value;
-}
+//
+// function downFile() {
+//     var workL = document.getElementById("workL");
+//     window.location="/downFile?id="+"4"+"&category="+category.value;
+// }
 
 function setImgitemClick(){
     if(file_sta.value==0){

@@ -12,4 +12,6 @@ public class Homew {
     private Integer easy;
     private Integer normal;
     private Integer difficulty;
+    private String uploadDate;
+    private String uploadName;
 }

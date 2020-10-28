@@ -27,4 +27,9 @@ public class HomewServiceImpl implements HomewService {
     public List<Homew> findByCate(Integer category) {
         return homewMapper.findByCate(category);
     }
+
+    @Override
+    public List<Homew> findAll() {
+        return homewMapper.findAll();
+    }
 }
