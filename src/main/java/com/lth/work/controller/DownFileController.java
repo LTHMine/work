@@ -22,6 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class DownFileController {
@@ -48,6 +51,7 @@ public class DownFileController {
         String url=works.getHome_path();
         String name=works.getHomework();
         name = name + url.substring( url.indexOf("."),url.length());
+        System.out.println(url);
         File file=new File(url);
         System.out.println("请求下载作业");
         if (file.exists()) {
@@ -110,21 +114,77 @@ public class DownFileController {
     public ModelAndView tableFile() {
         TableCode tableCode = new TableCode();
         ModelAndView modelAndView= new ModelAndView("workDown");
+
         List<Homew> Homew_all = homewService.findAll(); //获取原始数据
+
         List<workTable> all = new ArrayList<workTable>(); //存放接口要求的格式数据
         for (Homew homew : Homew_all) {
             workTable work = new workTable();
             work.setId(homew.getId());
-            work.setCategory(homew.getCategory()==1?"python":"web");
+            //需要改动
+            work.setCategory(homew.getCategory()==1?"Python":"网页");
             work.setSign(homew.getUploadName());
             work.setWorkName(homew.getHomework());
 
             //名字和上传日期
-            work.setSign("admin");
-            SimpleDateFormat df = new SimpleDateFormat("MM-dd");//设置日期格式
-            work.setUploadDate(df.format(new Date()));
+            work.setSign(homew.getUploadName());
+            String date = homew.getUploadDate();
+            date=date.substring( date.indexOf("-")+1,date.length());
+            work.setUploadDate(date);
             all.add(work);
         }
+
+        tableCode.setCode(0);
+        tableCode.setMsg("");
+        tableCode.setCount(all.size());
+        tableCode.setData(all);
+        modelAndView.addObject("all",all);
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/tableSearch")
+    public ModelAndView tableSearch(@RequestParam(value = "search",required = false,defaultValue="null") String search) {
+        boolean sta=true;
+        if(search.equals("null")){
+            System.out.println("空");
+            sta=false;
+        }else{
+            System.out.println("模糊查询"+search);
+        }
+        TableCode tableCode = new TableCode();
+        ModelAndView modelAndView= new ModelAndView("workDown");
+
+        List<Homew> Homew_all = homewService.findAll(); //获取原始数据
+
+        List<workTable> all = new ArrayList<workTable>(); //存放接口要求的格式数据
+        for (Homew homew : Homew_all) {
+            workTable work = new workTable();
+            work.setId(homew.getId());
+            //需要改动
+            work.setCategory(homew.getCategory()==1?"Python":"网页");
+            work.setSign(homew.getUploadName());
+            work.setWorkName(homew.getHomework());
+
+            //名字和上传日期
+            work.setSign(homew.getUploadName());
+            String date = homew.getUploadDate();
+            date=date.substring( date.indexOf("-")+1,date.length());
+            work.setUploadDate(date);
+            all.add(work);
+        }
+
+//        for (workTable workTable : all) {
+//            if(workTable.getId() == ){
+//
+//            }
+//        }
+        System.out.println(all);
+        if(sta) {
+            System.out.println("查询");
+            all = search(search, all); // 模糊查询
+        }
+        System.out.println(all);
         tableCode.setCode(0);
         tableCode.setMsg("");
         tableCode.setCount(all.size());
@@ -136,6 +196,16 @@ public class DownFileController {
 
 
 
-
+    public List<workTable> search(String name,List<workTable> list){
+        List<workTable> results = new ArrayList<workTable>();
+        Pattern pattern = Pattern.compile(name);
+        for(int i=0; i < list.size(); i++){
+            Matcher matcher = pattern.matcher((list.get(i)).getWorkName());
+            if(matcher.find()){
+                results.add(list.get(i));
+            }
+        }
+        return results;
+    }
 
 }

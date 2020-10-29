@@ -41,42 +41,48 @@
         <div class="layui-col-md10">
             <fieldset>
                 <legend>
-                    <span>作业下载</span>
+                    <span>作业、资源下载</span>
                 </legend>
             </fieldset>
 
             <div class="layui-tab">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">课后作业</li>
-                    <li>用户管理</li>
-                    <li>权限分配</li>
-                    <li>商品管理</li>
-                    <li>订单管理</li>
+                    <li onclick="changeFile(1)" class="layui-this">课后作业</li>
+                    <li onclick="changeFile(2)">资源</li>
                 </ul>
-                <div class="layui-tab-content">
 
+                <div class="layui-tab-content">
+                    <form action="/tableSearch" method="post">
+                        <input type="hidden" id="table_sta" value="homework">
+                        <input id="search" name="search"  class="layui-input" style="width: 30%;height: 30px;display: inline" type="text" placeholder="可输入文件名检索">
+                        <input class="layui-btn layui-btn-sm" style="width:50px;height: 29px;position:relative;top: -1px"  type="submit" value="搜索">
+                    </form>
                     <div class="layui-tab-item layui-show">
-                        <table lay-filter="demo">
+
+                        <table class="layui-table" lay-filter="demo">
                             <thead>
                                 <tr>
                                     <td lay-data="{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}">ID</td>
-                                    <td lay-data="{field: 'workName', title: '文件名', width:490}">文件名</td>
+                                    <td lay-data="{field: 'workName', title: '文件名', width:484}">文件名</td>
+<!--                                    <td lay-data="{field: 'workName', title: '文件名', width:200}">文件名</td>-->
                                     <td lay-data="{field: 'category', title: '分类', width:80, sort: true}">分类</td>
                                     <td lay-data="{field: 'sign', title: '上传者', width: 80}">上传者</td>
                                     <td lay-data="{field: 'uploadDate', title: '上传日期', width: 110, sort: true}">上传日期</td>
                                     <td lay-data="{field: '123', title: '', width: 90}"></td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: center">
                                 <tr th:each="tb:${all}">
-<!--                                    <td hidden th:value=""></td>-->
                                     <td th:text="${{tb.id}}"></td>
                                     <td th:text="${{tb.workName}}"></td>
-                                    <td id="cate" th:value="${{tb.category}}" th:text="${{tb.category}}"></td>
+                                    <td th:value="${{tb.category}}" th:text="${{tb.category}}"></td>
                                     <td th:text="${{tb.sign}}"></td>
-                                    <td th:text="${{tb.uploadDate}}"></td>
+                                    <td style="text-align: center;" th:text="${{tb.uploadDate}}"></td>
                                     <td>
-                                        <button onclick="downFile()" id="downf" name="downf" th:value="${{tb.id}}" type="button" class="layui-btn layui-btn-sm layui-btn-normal" >下载</button>
+                                        <a href="#" th:href="@{/downFile(id=${tb.id})}">
+                                            <button style="position: relative;top: -1px;height: 29px;width: 60px" type="button" class="layui-btn layui-btn-sm layui-btn-normal" >
+                                            下载
+                                        </button></a>
                                     </td>
                                 </tr>
                             </tbody>
