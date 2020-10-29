@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -35,14 +38,14 @@ public class DownFileController {
     /**
      * 资料下载按钮调用方法
      * @param id
-     * @param category
      * @param response
      * @throws UnsupportedEncodingException
      */
     @RequestMapping("/downFile")
-    public void downloadFile(@RequestParam("id")Integer id, @RequestParam("category")Integer category, HttpServletResponse response) throws UnsupportedEncodingException {
+    public void downloadFile(@RequestParam("id")Integer id, HttpServletResponse response) throws UnsupportedEncodingException {
         System.out.println("我进方法了");
-        Homew works = homewService.findById(id, category);
+
+        Homew works = homewService.findById(id);
         String url=works.getHome_path();
         String name=works.getHomework();
         name = name + url.substring( url.indexOf("."),url.length());
@@ -104,10 +107,10 @@ public class DownFileController {
      * 资料下载表格调用接口
      * @return
      */
-    @GetMapping("/tableFile")
-    @ResponseBody
-    public TableCode tableFile() {
+    @RequestMapping("/tableFile")
+    public ModelAndView tableFile() {
         TableCode tableCode = new TableCode();
+        ModelAndView modelAndView= new ModelAndView("workDown");
         List<Homew> Homew_all = homewService.findAll(); //获取原始数据
         List<workTable> all = new ArrayList<workTable>(); //存放接口要求的格式数据
         for (Homew homew : Homew_all) {
@@ -116,17 +119,24 @@ public class DownFileController {
             work.setCategory(homew.getCategory()==1?"python":"web");
             work.setSign(homew.getUploadName());
             work.setWorkName(homew.getHomework());
+
+            //名字和上传日期
             work.setSign("admin");
-//            work.setUploadDate();
+            SimpleDateFormat df = new SimpleDateFormat("MM-dd");//设置日期格式
+            work.setUploadDate(df.format(new Date()));
             all.add(work);
         }
         tableCode.setCode(0);
         tableCode.setMsg("");
         tableCode.setCount(all.size());
         tableCode.setData(all);
-
-        System.out.println(tableCode);
-        return tableCode;
+        modelAndView.addObject("all",all);
+//        System.out.println(all);
+        return modelAndView;
     }
+
+
+
+
 
 }

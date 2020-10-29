@@ -5,7 +5,7 @@ import com.lth.work.pojo.Homew;
 import java.util.List;
 
 public interface HomewService {
-    Homew findById(Integer id, Integer category);
+    Homew findById(Integer id);
     void updateHomew(Homew homew);
     List<Homew> findByCate(Integer category);
     List<Homew> findAll();

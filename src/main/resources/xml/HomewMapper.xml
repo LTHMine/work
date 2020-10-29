@@ -12,7 +12,7 @@
     </update>
 
     <select id="findById" resultType="com.lth.work.pojo.Homew">
-        select * from homework where id = #{id} and category=#{category}
+        select * from homework where id = #{id}
     </select>
 
     <select id="findByCate" resultType="com.lth.work.pojo.Homew">

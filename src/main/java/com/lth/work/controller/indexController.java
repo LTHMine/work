@@ -63,7 +63,7 @@ public class indexController {
         studentService.modifyStatus(stu_id,work_name); //设置学生状态为已交
         System.out.println("学生状态修改为已交");
 
-        Homew work = homewService.findById(workL, category);
+        Homew work = homewService.findById(workL);
         if(work==null){
             System.out.println("更新难易度失败，未找到数据库作业记录");
         }else {
@@ -157,7 +157,7 @@ public class indexController {
             String strh = oldfilename.substring( oldfilename.indexOf("."),oldfilename.length());
             Student stu = studentService.findById(stu_idd);
             String filename = stu_idd+"-"+stu.getName()+strh; //重命名
-            Homew homew_name = homewService.findById(workL, category);
+            Homew homew_name = homewService.findById(workL);
 
             String leftPath = "C:\\"+homew_name.getHomework();  //服务器环境
 //            String leftPath = "C:\\"+homew_name.getHomework();  //本地环境

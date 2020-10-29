@@ -35,7 +35,7 @@
                 <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
                 <li class=""><a href="/index">Python 作业</a></li>
                 <li class=""><a href="/webWork">Web 作业</a></li>
-                <li class=""><a href="/workDown">作业(资源)下载</a></li>
+                <li class=""><a href="/tableFile">作业(资源)下载</a></li>
             </ul>
         </div>
         <div class="layui-col-md10">
@@ -56,7 +56,32 @@
                 <div class="layui-tab-content">
 
                     <div class="layui-tab-item layui-show">
-                        <table id="work_home" lay-filter="work_home"></table>
+                        <table lay-filter="demo">
+                            <thead>
+                                <tr>
+                                    <td lay-data="{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}">ID</td>
+                                    <td lay-data="{field: 'workName', title: '文件名', width:490}">文件名</td>
+                                    <td lay-data="{field: 'category', title: '分类', width:80, sort: true}">分类</td>
+                                    <td lay-data="{field: 'sign', title: '上传者', width: 80}">上传者</td>
+                                    <td lay-data="{field: 'uploadDate', title: '上传日期', width: 110, sort: true}">上传日期</td>
+                                    <td lay-data="{field: '123', title: '', width: 90}"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="tb:${all}">
+<!--                                    <td hidden th:value=""></td>-->
+                                    <td th:text="${{tb.id}}"></td>
+                                    <td th:text="${{tb.workName}}"></td>
+                                    <td id="cate" th:value="${{tb.category}}" th:text="${{tb.category}}"></td>
+                                    <td th:text="${{tb.sign}}"></td>
+                                    <td th:text="${{tb.uploadDate}}"></td>
+                                    <td>
+                                        <button onclick="downFile()" id="downf" name="downf" th:value="${{tb.id}}" type="button" class="layui-btn layui-btn-sm layui-btn-normal" >下载</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
 
                     <div class="layui-tab-item ">内容2</div>

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface HomewMapper {
-    Homew findById(Integer id,Integer category);
+    Homew findById(Integer id);
     void updateHomew(Homew homew);
     List<Homew> findByCate(Integer category);
     List<Homew> findAll();

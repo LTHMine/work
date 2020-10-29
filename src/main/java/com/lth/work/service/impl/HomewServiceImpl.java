@@ -14,8 +14,8 @@ public class HomewServiceImpl implements HomewService {
     private HomewMapper homewMapper;
 
     @Override
-    public Homew findById(Integer id, Integer category) {
-        return homewMapper.findById(id,category);
+    public Homew findById(Integer id) {
+        return homewMapper.findById(id);
     }
 
     @Override
