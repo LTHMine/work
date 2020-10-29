@@ -22,7 +22,7 @@ layui.use('table', function(){
             {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
             ,{field: 'workName', title: '文件名', width:490}
             ,{field: 'category', title: '分类', width:80, sort: true}
-            ,{field: 'uploadName', title: '上传者', width: 80}
+            ,{field: 'sign', title: '上传者', width: 80}
             ,{field: 'uploadDate', title: '上传日期', width: 110, sort: true}
             ,{field: '', title: '', width: 145}
         ]]
