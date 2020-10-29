@@ -44,7 +44,6 @@ public class DownFileController {
     @RequestMapping("/downFile")
     public void downloadFile(@RequestParam("id")Integer id, HttpServletResponse response) throws UnsupportedEncodingException {
         System.out.println("我进方法了");
-
         Homew works = homewService.findById(id);
         String url=works.getHome_path();
         String name=works.getHomework();
