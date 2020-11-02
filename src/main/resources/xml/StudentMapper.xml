@@ -11,6 +11,9 @@
             <when test="work_name == 'python_status' ">
                 python_status
             </when>
+            <when test="work_name == 'net_status' ">
+                net_status
+            </when>
             <otherwise>
                 web_status
             </otherwise>

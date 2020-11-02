@@ -59,6 +59,9 @@ public class indexController {
         }else if (category==2){
             url="webWork";
             work_name="web_status";
+        }else if(category==3){
+            url="NetSecurity";
+            work_name="net_status";
         }
         studentService.modifyStatus(stu_id,work_name); //设置学生状态为已交
         System.out.println("学生状态修改为已交");
@@ -126,6 +129,24 @@ public class indexController {
         return modelAndView;
     }
 
+    @GetMapping("/netSecurity")
+    public ModelAndView netSecurity(){
+        List<Student> students = studentService.findAll();
+        List<Integer> stu_id = new ArrayList<Integer>();
+        List<String> stu_name = new ArrayList<String>();
+        for (Student student : students) {
+            stu_id.add(student.getId());
+            stu_name.add(student.getName());
+        }
+        List<Homew> work_list = homewService.findByCate(3);//分类为3 也就是网络安全类型
+        Collections.reverse(work_list); //倒序
+        ModelAndView modelAndView = new ModelAndView("netSecurity");
+        modelAndView.addObject("stuList",students);
+        modelAndView.addObject("work_list",work_list);
+        modelAndView.addObject("stu_idList",stu_id);
+        modelAndView.addObject("stu_nameList",stu_name);
+        return modelAndView;
+    }
 
     @GetMapping("/findStuID")
     @ResponseBody

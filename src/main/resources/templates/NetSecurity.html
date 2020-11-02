@@ -10,7 +10,7 @@
 
 
 <body id="body" οnscrοll=SetCookie("scroll",body.scrollTop); οnlοad="scrollback();">
-<!--<a href="/literature/test.txt"-->
+<!--<a href="/literature/VM15.5/SN.txt"-->
 <!--   download="w3logo"-->
 <!--&gt;123123</a>-->
 <!--导航-->
@@ -51,12 +51,12 @@
             <div class="layui-col-md10">
                 <fieldset>
                     <legend>
-                        <span>Web 作业</span>
+                        <span>网络安全 作业</span>
                     </legend>
                 </fieldset>
                 <form target="hidden" id="form_s" lay-filter="test" enctype=multipart/form-data class="layui-form" method="post" action="/formSubmit">
                     <iframe name="hidden" style="display:none;"></iframe>
-                    <input type="hidden" id="category" name="category" value="2"></input>
+                    <input type="hidden" id="category" name="category" value="3"></input>
                     <input type="hidden" id="stu_idd" name="stu_idd" value="0"></input>
                     <input type="hidden" id="file_sta" name="file_sta" value="0"></input>
 
@@ -90,19 +90,22 @@
                         </div>
 
 
-<!--                        <label class="layui-form-label">作业下载</label>-->
-<!--                        <div class="layui-input-inline">-->
-<!--                            <table class="layui-hide" id="file" lay-filter="file">-->
-<!--                                <button id="down" type="button" class="layui-btn"-->
-<!--                                        onclick="downFile()" >  &lt;!&ndash;此处需要修改成服务器直接下载&ndash;&gt;-->
-<!--                                    <i class="layui-icon">&#xe601;</i>下载作业-->
-<!--                                </button>-->
-<!--                            </table>-->
-<!--                        </div>-->
+                        <!--                    <label class="layui-form-label">作业下载</label>-->
+                        <!--                    <div class="layui-input-inline">-->
+                        <!--                        <table class="layui-hide" id="file" lay-filter="file">-->
+                        <!--                       <a href="/literature/第五章作业.docx" download="第五章作业.docx">-->
+                        <!--                           <button id="down" type="button" class="layui-btn"-->
+                        <!--                                 >-->
+                        <!--                            <i class="layui-icon">&#xe601;</i>下载作业-->
 
-
+                        <!--                            &lt;!&ndash;<a href="/literature/VM15.5/SN.txt"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;   download="w3logo"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;&gt;123123</a>&ndash;&gt;-->
+                        <!--                            </button>-->
+                        <!--                       </a>-->
+                        <!--                        </table>-->
+                        <!--                    </div>-->
                     </div>
-
                     <div class="layui-form-item">
                         <label class="layui-form-label">作业难易度</label>
                         <div class="layui-input-block">
@@ -115,10 +118,12 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">上传</label>
                         <div id="submitbtngroup"  class="layui-input-inline" style="width: auto;">
-
+                            <!--                        <button id="upl" lay-verify="" type="button"-->
+                            <!--                                class="layui-btn load" lay-data="{url: '/upload', accept: 'file', exts:'doc|docx|pdf' }" >-->
+                            <!--                            <i class="layui-icon">&#xe67c;</i>选择文件-->
+                            <!--                        </button>-->
 
                         </div>
-
                     </div>
 
                     <div class="layui-form-item upList">
@@ -159,6 +164,7 @@
 <script src="layui.js" charset="utf-8"></script>
 <script src="index.js" charset="utf-8"></script>
 <script>
+
 </script>
 </body>
 
