@@ -307,7 +307,7 @@ function fle(url) {
     if(url==1)
         url="index";
     if(url==3)
-        url="NetSecurity";
+        url="netSecurity";
     // window.location.reload("http://localhost:8080/"+url);  //本地
     window.location.replace("http://LTHMine.club/"+url);  //服务器
     // window.location.reload("http://192.168.0.101:8080/"+url);   //台式
