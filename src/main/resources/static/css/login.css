@@ -4,9 +4,11 @@
 * @Last Modified by:   zhibinm
 * @Last Modified time: 2019-04-01 13:37:19
 */
+
+
 .login-bg{
     /*background: #eeeeee url() 0 0 no-repeat;*/
-     background:url(../../templates/admin/images/bg.png) no-repeat center;
+    background:url(/images/bg.png) no-repeat center;
     background-size: cover;
     overflow: hidden;
 }
@@ -38,7 +40,7 @@
     font-size: 16px;
 }
 .login #darkbannerwrap {
-    background: url(../../templates/admin/images/aiwrap.png);
+    background: url(/images/aiwrap.png);
     width: 18px;
     height: 10px;
     margin: 0 0 20px -58px;
@@ -87,7 +89,7 @@
     width:100%;
 }
 .login hr {
-    background: #fff url() 0 0 no-repeat;
+    background: #fff  0 0 no-repeat;
 }
 .login hr.hr15 {
     height: 15px;
