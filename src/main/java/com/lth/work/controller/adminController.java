@@ -79,6 +79,21 @@ public class adminController {
         return "/admin/member-add";
     }
 
+    @RequestMapping("/addStu")
+    @ResponseBody
+    public uploadJson addStu(Integer id,String name,String password){
+        uploadJson json = new uploadJson();
+        Student student=new Student();
+        student.setId(id);
+        student.setName(name);
+        student.setPassword(password);
+        System.out.println(student);
+        studentService.addStudent(student);
+        json.setMsg("增加成功");
+        json.setCode("1");
+        return json;
+    }
+
 
 
 

@@ -2,7 +2,9 @@
   "code": 0
   ,"msg": ""
   ,"count": 3000000
-  ,"data": [{
+  ,"data":
+
+[{
     "id": "10001"
     ,"username": "杜甫"
     ,"email": "xianxin@layui.com"

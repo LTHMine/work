@@ -14,4 +14,6 @@ public interface StudentMapper {
     List<Student> findAll();
 
     void modifyStatus(Integer id,String work_name);
+
+    void addStudent(Student student);
 }

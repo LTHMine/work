@@ -34,4 +34,9 @@ public class StudentServiceImpl implements StudentService {
     public void modifyStatus(Integer id, String work_name) {
         studentMapper.modifyStatus(id,work_name);
     }
+
+    @Override
+    public void addStudent(Student student) {
+        studentMapper.addStudent(student);
+    }
 }

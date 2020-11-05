@@ -9,4 +9,5 @@ public interface StudentService {
     Student findByName(String name);
     List<Student> findAll();
     void modifyStatus(Integer id,String work_name);
+    void addStudent(Student student);
 }
