@@ -16,4 +16,6 @@ public interface StudentMapper {
     void modifyStatus(Integer id,String work_name);
 
     void addStudent(Student student);
+
+    void delStudent(Integer id);
 }

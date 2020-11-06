@@ -17,4 +17,13 @@
     <select id="findByidCateHome" resultType="com.lth.work.pojo.Twork">
         select * from Twork where stuID=#{stuID} and category=#{category} and homework_id=#{workL} ;
     </select>
+    <select id="findAll" resultType="com.lth.work.pojo.Twork">
+        select * from Twork;
+    </select>
+
+    <select id="findPage" resultType="com.lth.work.pojo.Twork">
+        select
+        *
+        from Twork
+    </select>
 </mapper>

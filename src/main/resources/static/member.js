@@ -4,14 +4,15 @@ layui.use('table', function(){
         elem: '#test'
         ,url: '/admin/getStu'
         ,toolbar: '#toolbarDemo'
+
         ,cols: [[
                 {type:'checkbox'},
-                {field: 'id', title: 'ID', width:80, sort: true}
-                ,{field: 'name', title: '用户名', width:120 }
-                ,{field: 'password', title: '密码', width:120}
-                ,{field: 'python_status', title: 'python作业', width:120, sort:true, edit:'text'}
-                ,{field: 'web_status', title: 'web作业', width: 120,sort:true, edit:'text'}
-                ,{field: 'net_status', title: '网安作业', width: 120, sort: true,edit:'text'}
+                {field: 'id', title: 'ID',  sort: true}
+                ,{field: 'name', title: '用户名'}
+                ,{field: 'password', title: '密码'}
+                ,{field: 'python_status', title: 'python作业', sort:true, edit:'text'}
+                ,{field: 'web_status', title: 'web作业', sort:true, edit:'text'}
+                ,{field: 'net_status', title: '网安作业',  sort: true,edit:'text'}
             ]]
 
     });

@@ -166,9 +166,9 @@ public class indexController {
         System.out.println("作业类型："+category+","+"学生id："+stu_idd+","+"作业代号："+workL+","+"备注："+beiz);
         Twork twork =new Twork();
         twork.setBeiz(beiz);
-        twork.setCategory(category);
+        twork.setCategory(category.toString());
         twork.setStuID(stu_idd);
-        twork.setHomework_id(workL);
+        twork.setHomework_id(workL.toString());
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             //获取下载的文件   C:\第四次作业
@@ -199,7 +199,8 @@ public class indexController {
             Integer stat=1;
             for (Twork tworka : tworks) {
                 System.out.println("数据库查到作业记录");
-                if(tworka.getStuID()==stu_idd && tworka.getCategory()==category && tworka.getHomework_id()==workL){
+                if(tworka.getStuID()==stu_idd && tworka.getCategory().equals(category.toString()) &&
+                    tworka.getHomework_id().equals(workL.toString())){
                     stat=0;
                 }
             }
@@ -223,7 +224,8 @@ public class indexController {
         json.setCode( "不是重复上传");
         for (Twork twork : tworks) {
             System.out.println(twork);
-            if(twork.getStuID()==stuID && twork.getCategory()==category && twork.getHomework_id()==workL){
+            if(twork.getStuID()==stuID && twork.getCategory().equals(category.toString()) &&
+                twork.getHomework_id().equals(workL.toString())){
                 System.out.println("重复");
                 json.setMsg( "你已经上传过作业了，本次为你覆盖上次作业");
                 json.setCode( "失败");}

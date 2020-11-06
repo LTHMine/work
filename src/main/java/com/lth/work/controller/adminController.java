@@ -1,20 +1,21 @@
 package com.lth.work.controller;
 
 
-import com.lth.work.pojo.Student;
-import com.lth.work.pojo.studentTable;
-import com.lth.work.pojo.uploadJson;
+import com.lth.work.pojo.*;
+import com.lth.work.service.CateService;
+import com.lth.work.service.HomewService;
 import com.lth.work.service.StudentService;
+import com.lth.work.service.TworkService;
+import com.lth.work.util.PageRequest;
+import com.lth.work.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,12 @@ public class adminController {
 
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private TworkService tworkService;
+    @Autowired
+    private HomewService homewService;
+    @Autowired
+    private CateService cateService;
 
     @RequestMapping("/login") //跳转到登陆页面
     public String admin(){
@@ -54,6 +61,11 @@ public class adminController {
         return "/admin/welcome";
     }
 
+
+    /**
+     * 学生列表 静态
+     * @return
+     */
     @RequestMapping("/member-list")
     public ModelAndView member_list(){
         ModelAndView modelAndView=new ModelAndView("/admin/member-list");
@@ -68,17 +80,32 @@ public class adminController {
     }
 
 
-
+    /**
+     * 学生列表 动态
+     * @return
+     */
     @RequestMapping("/member-list1")
     public String member_list1(){
         return "/admin/member-list1";
     }
 
+    /**
+     * 增加学生
+     * @return
+     */
     @RequestMapping("/member-add")
     public String member_add(){
         return "/admin/member-add";
     }
 
+
+    /**
+     * 增加学生
+     * @param id
+     * @param name
+     * @param password
+     * @return
+     */
     @RequestMapping("/addStu")
     @ResponseBody
     public uploadJson addStu(Integer id,String name,String password){
@@ -95,9 +122,10 @@ public class adminController {
     }
 
 
-
-
-
+    /**
+     * 查询所有学生
+     * @return
+     */
     @RequestMapping("/getStu")
     @ResponseBody
     public studentTable getStu(){
@@ -110,6 +138,14 @@ public class adminController {
         return stus;
     }
 
+
+    /**
+     * 修改学生交作业的状态
+     * @param id
+     * @param field
+     * @param value
+     * @return
+     */
     @RequestMapping("/updateStu")
     @ResponseBody
     public uploadJson updateStu(Integer id,String field,String value){
@@ -120,10 +156,71 @@ public class adminController {
         return json;
     }
 
-    @RequestMapping("/member-del")
-    public String member_del(){
-        return "/admin/member-del";
+    /**
+     * 删除学生
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delStu")
+    @ResponseBody
+    public uploadJson delStu(Integer id){
+        System.out.println(id);
+        uploadJson json = new uploadJson();
+        studentService.delStudent(id);
+        json.setCode("1");
+        json.setMsg("删除成功");
+        return json;
     }
+
+
+
+    /**
+     * 已发布作业
+     * @return
+     */
+    @RequestMapping("/twork-list")
+    public String twork_list(PageRequest pageQuery){
+        if (pageQuery.getPageNum()==0)
+            pageQuery.setPageNum(1);
+        if (pageQuery.getPageSize()==0)
+            pageQuery.setPageSize(10);
+
+        List<Homew> all = homewService.findAll();
+        return "/admin/twork1";
+    }
+
+
+    /**
+     * 已交作业列表
+     * @param pageQuery
+     * @return
+     */
+    @RequestMapping("/twork-list1")
+    public ModelAndView twork_list1(PageRequest pageQuery){
+        if (pageQuery.getPageNum()==0)
+            pageQuery.setPageNum(1);
+        if (pageQuery.getPageSize()==0)
+            pageQuery.setPageSize(10);
+        ModelAndView modelAndView=new ModelAndView("/admin/twork");
+        PageResult page = tworkService.findPage(pageQuery);
+        if (page.getPageNum() > page.getTotalPages())
+            pageQuery.setPageNum(page.getTotalPages());
+        page = tworkService.findPage(pageQuery);
+        List<Twork> all=page.getContent();
+        for (Twork twork : all) {
+            //将作业id转换成作业名称
+            Homew byId = homewService.findById(Integer.parseInt(twork.getHomework_id()));
+            twork.setHomework_id(byId.getHomework());
+            //将作业类型转换成类型名称
+            Category byId1 = cateService.findById(Integer.parseInt(twork.getCategory()));
+            twork.setCategory(byId1.getCategory()); //在显示页面上显示作业类型中文名称
+        }
+        modelAndView.addObject("all",all);
+        modelAndView.addObject("page",page);
+        modelAndView.addObject("len",all.size());
+        return modelAndView;
+    }
+
 
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request){

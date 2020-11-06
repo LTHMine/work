@@ -10,4 +10,5 @@ public interface StudentService {
     List<Student> findAll();
     void modifyStatus(Integer id,String work_name);
     void addStudent(Student student);
+    void delStudent(Integer id);
 }

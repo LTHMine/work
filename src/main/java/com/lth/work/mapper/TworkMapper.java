@@ -12,6 +12,9 @@ public interface TworkMapper {
     List<Twork> findByName(String name);
     List<Twork> findByCate(Integer category);
 
+    List<Twork> findAll();
+    List<Twork> findPage();
+
     List<Twork> findByidCateHome(Integer stuID,Integer category,Integer workL);
 
 }

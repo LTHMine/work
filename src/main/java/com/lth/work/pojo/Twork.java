@@ -8,8 +8,8 @@ public class Twork {
     private String workPath; //作业路径
     private String workName; //作业名字
     private Integer stuID;  //上传者学号
-    private Integer category; //分类
-    private Integer homework_id; //第几次作业
+    private String category; //分类
+    private String homework_id; //第几次作业
     private String beiz;  //备注
 
 }
