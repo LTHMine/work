@@ -94,7 +94,9 @@ public class indexController {
             stu_id.add(student.getId());
             stu_name.add(student.getName());
         }
-        List<Homew> work_list = homewService.findByCate(1);//分类为1，也就是python类型
+        List<Homew> work_list = homewService.findByCatePost(1);//分类为1，也就是python类型
+
+
         Collections.reverse(work_list); //倒序
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("stuList",students);
@@ -118,7 +120,7 @@ public class indexController {
             stu_id.add(student.getId());
             stu_name.add(student.getName());
         }
-        List<Homew> work_list = homewService.findByCate(2);//分类为2 也就是web类型
+        List<Homew> work_list = homewService.findByCatePost(2);//分类为2 也就是web类型
         Collections.reverse(work_list); //倒序
         ModelAndView modelAndView = new ModelAndView("webWork");
         modelAndView.addObject("stuList",students);
@@ -137,7 +139,7 @@ public class indexController {
             stu_id.add(student.getId());
             stu_name.add(student.getName());
         }
-        List<Homew> work_list = homewService.findByCate(3);//分类为3 也就是网络安全类型
+        List<Homew> work_list = homewService.findByCatePost(3);//分类为3 也就是网络安全类型
         Collections.reverse(work_list); //倒序
         ModelAndView modelAndView = new ModelAndView("netSecurity");
         modelAndView.addObject("stuList",students);

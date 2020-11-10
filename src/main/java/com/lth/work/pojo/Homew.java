@@ -6,8 +6,8 @@ import lombok.Data;
 public class Homew {
     private Integer id;
     private String homework;
-    private Integer category;
-    private Integer home_status;
+    private String category;
+    private String home_status;
     private String home_path;
     private Integer easy;
     private Integer normal;

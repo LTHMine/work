@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lth.work.mapper.HomewMapper">
+    <insert id="insertHomew">
+        insert into homework (homework,category,home_status,home_path,uploadDate,uploadName)
+                            values (#{homework},#{category},#{home_status},#{home_path},#{uploadDate},#{uploadName})
+    </insert>
 
     <update id="updateHomew">
         UPDATE homework
@@ -20,6 +24,17 @@
     </select>
     <select id="findAll" resultType="com.lth.work.pojo.Homew">
         select * from homework;
+    </select>
+    <select id="findPage" resultType="com.lth.work.pojo.Homew">
+        select
+        *
+        from homework
+        <if test="sort != null">
+            where category = #{sort}
+        </if>
+    </select>
+    <select id="findByCatePost" resultType="com.lth.work.pojo.Homew">
+        select * from homework where category=#{category} and home_status=1
     </select>
 
 </mapper>

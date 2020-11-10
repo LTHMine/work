@@ -1,6 +1,7 @@
 package com.lth.work.util;
 
 import com.github.pagehelper.PageInfo;
+import com.lth.work.pojo.Homew;
 import com.lth.work.pojo.Twork;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ public class PageUtils {
      * @param pageInfo
      * @return
      */
-    public static PageResult getPageResult(PageRequest pageRequest, PageInfo<Twork> pageInfo) {
+    public static PageResult getPageResult(PageRequest pageRequest, PageInfo<?> pageInfo) {
         PageResult pageResult = new PageResult();
         pageResult.setPageNum(pageInfo.getPageNum());
         pageResult.setPageSize(pageInfo.getPageSize());
@@ -21,5 +22,7 @@ public class PageUtils {
         pageResult.setContent(pageInfo.getList());
         return pageResult;
     }
+
+
 
 }

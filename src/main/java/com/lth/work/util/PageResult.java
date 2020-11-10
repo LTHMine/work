@@ -26,5 +26,5 @@ public class PageResult {
     /**
      * 数据模型
      */
-    private List<Twork> content;
+    private List<?> content;
 }

@@ -12,10 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -178,16 +184,108 @@ public class adminController {
      * 已发布作业
      * @return
      */
-    @RequestMapping("/twork-list")
-    public String twork_list(PageRequest pageQuery){
+    @RequestMapping("/homew-list")
+    public ModelAndView homew_list(PageRequest pageQuery,String sort){
+        if(sort!=null && sort.equals("null")){
+            sort=null;
+        }
+        List<Category> cateAll = cateService.findAll();
+        ModelAndView modelAndView=new ModelAndView("/admin/homew");
         if (pageQuery.getPageNum()==0)
             pageQuery.setPageNum(1);
         if (pageQuery.getPageSize()==0)
-            pageQuery.setPageSize(10);
+            pageQuery.setPageSize(8);
+        PageResult page = homewService.findPage(pageQuery,sort);
+        if (page.getPageNum() > page.getTotalPages())
+            pageQuery.setPageNum(page.getTotalPages());
+        page = homewService.findPage(pageQuery,sort);
+        List<Homew> all= (List<Homew>) page.getContent();
 
-        List<Homew> all = homewService.findAll();
-        return "/admin/twork1";
+        for (Homew homew : all) {
+            Category cate = cateService.findById(Integer.parseInt(homew.getCategory()));
+            homew.setCategory(cate.getCategory());
+            homew.setHome_status(homew.getHome_status().equals("1")?"已启用":"已停用");
+        }
+        modelAndView.addObject("cateAll",cateAll);
+        modelAndView.addObject("all",all);
+        modelAndView.addObject("len",all.size());
+        modelAndView.addObject("page",page);
+        return modelAndView;
     }
+
+    /**
+     * 更改发布作业的状态
+     */
+    @RequestMapping("/homew_status")
+    @ResponseBody
+    public uploadJson change_status(Integer id,Integer status){
+        Homew byId = homewService.findById(id);
+        byId.setHome_status(status.toString());
+        homewService.updateHomew(byId);
+        uploadJson json=new uploadJson();
+        json.setCode("1");
+        json.setMsg("修改成功");
+        return json;
+    }
+
+    /**
+     * 打开增加已发布作业页面
+     */
+    @RequestMapping("/homew-add")
+    public ModelAndView homew_add(){
+        ModelAndView modelAndView=new ModelAndView("/admin/homew-add");
+        List<Category> CateAll = cateService.findAll();
+        modelAndView.addObject("CateAll",CateAll);
+        return modelAndView;
+    }
+
+    /**
+     * 作业上传
+     */
+    String path=null;
+    @RequestMapping("/uploadFile")
+    @ResponseBody
+    public uploadJson uploadFile(HttpServletRequest request) throws IOException {
+        uploadJson json=new uploadJson();
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        MultipartFile multiFile = multipartRequest.getFile("file");
+        String oldfilename = multiFile.getOriginalFilename(); //获取文件名称
+        String leftPath = "C:\\";  //服务器环境
+//        String leftPath = "/Users/wanan/";
+        path=leftPath+oldfilename;
+        File file = new File(leftPath, oldfilename);
+        multiFile.transferTo(file); //保存文件
+        json.setMsg(oldfilename);
+        json.setCode( "成功");
+        System.out.println(oldfilename);
+        return json;
+    }
+
+    /**
+     * 新增作业数据
+     */
+    @RequestMapping("/homew-insert")
+    @ResponseBody
+    public uploadJson homew_insert(String uploadName,String homework,String category){
+        uploadJson json=new uploadJson();
+        Homew homew=new Homew();
+        homew.setHome_status("1"); //状态
+        homew.setCategory(category); //类别
+        homew.setHomework(homework); //作业名称
+        homew.setUploadName(uploadName); //上传者名字
+        Date date=new Date();//此时date为当前的时间
+        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd");//设置当前时间的格式，为年-月-日
+        homew.setUploadDate(dateFormat.format(date));  //上传时间
+
+        String leftPath = path;
+        homew.setHome_path(leftPath); //路径
+        System.out.println(homew);
+        homewService.insertHomew(homew);
+        json.setCode("1");
+        json.setMsg("添加成功");
+        return json;
+    }
+
 
 
     /**
@@ -200,13 +298,13 @@ public class adminController {
         if (pageQuery.getPageNum()==0)
             pageQuery.setPageNum(1);
         if (pageQuery.getPageSize()==0)
-            pageQuery.setPageSize(10);
+            pageQuery.setPageSize(8);
         ModelAndView modelAndView=new ModelAndView("/admin/twork");
         PageResult page = tworkService.findPage(pageQuery);
         if (page.getPageNum() > page.getTotalPages())
             pageQuery.setPageNum(page.getTotalPages());
         page = tworkService.findPage(pageQuery);
-        List<Twork> all=page.getContent();
+        List<Twork> all= (List<Twork>) page.getContent();
         for (Twork twork : all) {
             //将作业id转换成作业名称
             Homew byId = homewService.findById(Integer.parseInt(twork.getHomework_id()));

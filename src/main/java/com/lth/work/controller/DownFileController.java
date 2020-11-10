@@ -122,11 +122,11 @@ public class DownFileController {
             workTable work = new workTable();
             work.setId(homew.getId());
             //需要改动
-            if(homew.getCategory()==1){
+            if(homew.getCategory().equals("1")){
                 work.setCategory("Python");
-            }else if(homew.getCategory()==2){
+            }else if(homew.getCategory().equals("2")){
                 work.setCategory("网页");
-            }else if(homew.getCategory()==3) {
+            }else if(homew.getCategory().equals("3")) {
                 work.setCategory("网安");
             }
 
@@ -171,7 +171,15 @@ public class DownFileController {
             workTable work = new workTable();
             work.setId(homew.getId());
             //需要改动
-            work.setCategory(homew.getCategory()==1?"Python":"网页");
+            if(homew.getCategory().equals("1"))
+                work.setCategory("Python");
+            else if(homew.getCategory().equals("2"))
+                work.setCategory("网页");
+            else if(homew.getCategory().equals("3"))
+                work.setCategory("网安");
+
+
+
             work.setSign(homew.getUploadName());
             work.setWorkName(homew.getHomework());
 
