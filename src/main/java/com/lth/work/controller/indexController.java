@@ -159,7 +159,7 @@ public class indexController {
 
     @PostMapping("/upload")
     @ResponseBody
-    synchronized public uploadJson uploadFile(HttpServletRequest request) throws IOException, JSONException {
+    synchronized public uploadJson uploadFile(HttpServletRequest request) {
         uploadJson json =new uploadJson();
         Integer category= Integer.valueOf(request.getParameter("category"));
         Integer stu_idd= Integer.valueOf(request.getParameter("stu_idd"));
@@ -210,9 +210,9 @@ public class indexController {
                 tworkService.insert(twork);
             System.out.println(json);
             } catch (Exception e) {
-            e.printStackTrace();
             json.setMsg( "上传失败，请重新上传或邮件发送给1445047090@qq.com");
             json.setCode( "失败");
+            e.printStackTrace();
             }
         return json;
         }

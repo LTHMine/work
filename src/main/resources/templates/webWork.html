@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/layui.css"  media="all">
     <link rel="stylesheet" href="index.css"  media="all">
+    <script src="/lib/L2Dwidget.min.js"></script>
 </head>
 
 
@@ -153,7 +154,13 @@
 </div>
 
 
-
+<div id="cc">
+    <script>
+        L2Dwidget.init({
+            model: { jsonPath: "/assets/asuna_04.model.json" }
+        });
+    </script>
+</div>
 
 
 <script src="layui.js" charset="utf-8"></script>
