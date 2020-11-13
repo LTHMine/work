@@ -172,6 +172,7 @@ public class indexController {
         twork.setStuID(stu_idd);
         twork.setHomework_id(workL.toString());
         try {
+
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             //获取下载的文件   C:\第四次作业
             MultipartFile multiFile = multipartRequest.getFile("file");
@@ -217,7 +218,7 @@ public class indexController {
         return json;
         }
 
-    @GetMapping("/check")
+    @RequestMapping("/check")
     @ResponseBody
     public uploadJson checkTwork(Integer stuID,Integer category,Integer workL){
         uploadJson json = new uploadJson();

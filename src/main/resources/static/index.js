@@ -37,7 +37,7 @@ jsCssLoader({
     ]
 },new Date().getTime());
 
-
+var upStu=0;
 
 
 layui.use('element', function(){
@@ -127,7 +127,7 @@ layui.use('upload', function(){
         uploadInst = upload.render(
             {
                 elem: '.load' //绑定
-                , auto: false
+                ,auto: false
                 ,drag:false
                 , method: 'POST'
                 , accept: "file"
@@ -135,10 +135,10 @@ layui.use('upload', function(){
                 , bindAction: '#FormAction'
                 , data: {
                     "category": category.value,
-                    "stu_idd": stu_idd.value
+                    "stu_idd": stu_idd.value,
+                    "workL": workL.value
                 }
                 , choose: function (obj) {
-                    // uploadRender.config.elem.next()[0].value='';
                     UPLOAD_FILES = obj.pushFile();
                     uploadInst.reload({  //重要
                         data: {
@@ -186,6 +186,7 @@ layui.use('upload', function(){
                         console.log("上传成功"); //需要改动
                         // var upp = document.getElementById("upp");
                         // upp.innerText="上传成功，请提交";
+                        upStu=1;
                     }
                 }
                 , error: function (res, index, upload) {
@@ -202,13 +203,6 @@ layui.use('upload', function(){
 
 });
 
-
-
-//
-// function downFile() {
-//     var workL = document.getElementById("workL");
-//     window.location="/downFile?id="+"4"+"&category="+category.value;
-// }
 
 function setImgitemClick(){
     if(file_sta.value==0){
@@ -251,28 +245,12 @@ function sub() {
                 formsta=1;
                 layer.msg('你已经交过作业了，这次为你覆盖上次的作业',{icon: 1,time:2000});
                 setTimeout("all()",2000);
-                setTimeout("mooy(3)",1000);
-                //已存在，是否继续上传
-                // layer.confirm('你已上传过作业，是否覆盖继续上传', {
-                //     btn: ['是(5s后自动选择)','否'] //按钮
-                //     ,skin: 'layui-layer-lan'
-                // }, function(){
-                //     // layer.msg( );
-                //     setTimeout("mooy(3)",2000); //读秒后运行函数mooy()
-                //     layer.close(layer.index);
-                //     layer.alert('提交成功',{icon: 1,time:3000});
-                // }, function(){
-                //     i= true;
-                //     layer.alert('取消提交',{icon: 1,time: 2000});
-                //     setTimeout("mooy(sta)",100); //读秒后运行函数mooy()
-                // });
-
+                setTimeout("mooy(3)",5000);
             }
-            // console.log("没有选择文件 "+rel.msg); //是否继续上传做操作
         }
     });
-    setTimeout("al()",100); //读秒后运行函数mooy()
-    setTimeout("mooy(sta)",5000); //读秒后运行函数mooy()
+    setTimeout("al()",100); //弹窗
+    setTimeout("mooy(sta)",1000); //读秒后运行函数mooy()
 
 }
 
@@ -296,7 +274,7 @@ function mooy(sta){ //提交表单
             sb();
             formsta=1;
         }
-        setTimeout("fle(category.value)",300); //读秒后运行函数mooy()
+        setTimeout("fle(category.value)",300); //读秒后运行函数mooy() //跳转
     }
 }
 
@@ -308,9 +286,15 @@ function fle(url) {
         url="index";
     if(url==3)
         url="netSecurity";
-    // window.location.reload("http://localhost:8080/"+url);  //本地
-    window.location.replace("http://LTHMine.club/"+url);  //服务器
-    // window.location.reload("http://192.168.0.101:8080/"+url);   //台式
+
+    if (upStu==1){
+        // window.location.reload("http://localhost:8080/"+url);  //本地
+        // window.location.reload("http://192.168.0.101:8080/"+url);   //台式
+        alert("上传成功");
+        window.location.replace("http://LTHMine.club/"+url);  //服务器
+    }else {
+        alert("上传失败，请联系管理员");
+    }
 }
 function sb() {
     var uo = document.getElementById('form_s');
@@ -319,8 +303,10 @@ function sb() {
 function al() {
 
     if(sta!=0){
-        layer.alert('提交成功，5s后网页将自动刷新',{icon: 1});
+        layer.alert('提交成功，请等待上传结果',{icon: 1});
     }
+
+
 }
 
 function all() {
