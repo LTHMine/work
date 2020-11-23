@@ -54,6 +54,11 @@ public class HomewServiceImpl implements HomewService {
         homewMapper.insertHomew(homew);
     }
 
+    @Override
+    public List<Homew> findByUse() {
+        return homewMapper.findByUse();
+    }
+
     /**
      * 调用分页插件完成分页
      * @return

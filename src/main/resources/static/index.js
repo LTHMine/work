@@ -1,44 +1,9 @@
 
 
-/**
- * js动态加载js css文件,可以配置文件后辍，防止浏览器缓存
- * @param {obj} config   加载资源配置
- * @param {string} version  资源后辍配置
- */
-function jsCssLoader(config,version) {
-    this.css = config.css;
-    this.scripts = config.scripts;
-    this.head = document.getElementsByTagName('head')[0];
 
-    this.load = function() {
-        this.loadCSS();
-        this.loadScript();
-    }
-    this.loadCSS = function() {
-        var that = this;
-        this.css.forEach(function(csslink) {
-            document.write(' ')
-        });
-    }
-    this.loadScript = function() {
-        var that = this;
-        this.scripts.forEach(function(scriptlink){
-            document.write('');
-        });
-    }
-    this.load();
-};
-jsCssLoader({
-    css: [
-        'index.css',
-    ],
-    scripts: [
-        'index.js',
-    ]
-},new Date().getTime());
+
 
 var upStu=0;
-
 
 layui.use('element', function(){
     var element = layui.element;
@@ -250,7 +215,7 @@ function sub() {
         }
     });
     setTimeout("al()",100); //弹窗
-    setTimeout("mooy(sta)",1000); //读秒后运行函数mooy()
+    setTimeout("mooy(sta)",5000); //读秒后运行函数mooy()
 
 }
 
@@ -279,21 +244,14 @@ function mooy(sta){ //提交表单
 }
 
 function fle(url) {
-
-    if(url==2)
-        url="webWork";
-    if(url==1)
-        url="index";
-    if(url==3)
-        url="netSecurity";
-
     if (upStu==1){
         // window.location.reload("http://localhost:8080/"+url);  //本地
         // window.location.reload("http://192.168.0.101:8080/"+url);   //台式
-        alert("上传成功");
-        window.location.replace("http://LTHMine.club/"+url);  //服务器
+        alert("上传成功，请到查询作业状态模块确定一下噢");
+        window.location.href="/workSearch";
     }else {
-        alert("上传失败，请联系管理员");
+        alert("上传出了点问题～，请查询作业状态或联系管理员");
+        window.location.href="/workSearch";
     }
 }
 function sb() {
@@ -303,14 +261,14 @@ function sb() {
 function al() {
 
     if(sta!=0){
-        layer.alert('提交成功，请等待上传结果',{icon: 1});
+        layer.alert('提交成功，请等待上传结果……',{icon: 1});
     }
 
 
 }
 
 function all() {
-    layer.msg('上传成功',{icon: 1,time:2000});
+    layer.msg('请等待上传结果……',{icon: 1,time:2000});
 }
 
 

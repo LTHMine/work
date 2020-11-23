@@ -250,7 +250,7 @@ public class adminController {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile multiFile = multipartRequest.getFile("file");
         String oldfilename = multiFile.getOriginalFilename(); //获取文件名称
-        String leftPath = "C:\\";  //服务器环境
+        String leftPath = "C:/workPath/";  //服务器环境
 //        String leftPath = "/Users/wanan/";
         path=leftPath+oldfilename;
         File file = new File(leftPath, oldfilename);
@@ -258,6 +258,8 @@ public class adminController {
         json.setMsg(oldfilename);
         json.setCode( "成功");
         System.out.println(oldfilename);
+
+
         return json;
     }
 

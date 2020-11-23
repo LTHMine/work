@@ -9,7 +9,9 @@
         VALUES (#{workPath},#{workName},#{stuID},#{category},#{homework_id},#{beiz})
     </insert>
 
-    <select id="findByStuID" resultType="com.lth.work.pojo.Twork"></select>
+    <select id="findByStuIDAndHomeId" resultType="com.lth.work.pojo.Twork">
+        select * from Twork where stuID = #{StuID} and homework_id = #{homeid};
+    </select>
     <select id="findByName" resultType="com.lth.work.pojo.Twork"></select>
     <select id="findByCate" resultType="com.lth.work.pojo.Twork"></select>
 

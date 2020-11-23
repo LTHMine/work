@@ -1,9 +1,6 @@
 package com.lth.work.controller;
 
-import com.lth.work.pojo.Homew;
-import com.lth.work.pojo.Twork;
-import com.lth.work.pojo.Student;
-import com.lth.work.pojo.uploadJson;
+import com.lth.work.pojo.*;
 import com.lth.work.service.HomewService;
 import com.lth.work.service.TworkService;
 import com.lth.work.service.StudentService;
@@ -236,11 +233,46 @@ public class indexController {
         return json;
     }
 
-    @RequestMapping("/litera")
-    public String litera(){
-        return "litera";
+    @RequestMapping("/workSearch")
+    public ModelAndView workSearch(){
+        List<Student> students = studentService.findAll();
+        List<Integer> stu_id = new ArrayList<Integer>();
+        List<String> stu_name = new ArrayList<String>();
+        for (Student student : students) {
+            stu_id.add(student.getId());
+            stu_name.add(student.getName());
+        }
+        List<Homew> work_list = homewService.findByCatePost(1);//分类为1，也就是python类型
+        Collections.reverse(work_list); //倒序
+        ModelAndView modelAndView = new ModelAndView("workSearch");
+        modelAndView.addObject("stuList",students);
+        modelAndView.addObject("stu_idList",stu_id);
+        modelAndView.addObject("stu_nameList",stu_name);
+        modelAndView.addObject("work_list",work_list);
+        return modelAndView;
     }
 
+    @RequestMapping("/searchStu")
+    @ResponseBody
+    public List<StatuJson> searchStu(Integer stu_id){
+        //获取当前所有需要交的作业，然后查询是否已交。
+        List<Homew> byUse = homewService.findByUse();
+        List<StatuJson> jsons=new ArrayList<StatuJson>();
+        for (Homew homew : byUse) {
+            StatuJson json=new StatuJson();
+            json.setWorkName(homew.getHomework());
+            Twork byStuIDAndHomeId = tworkService.findByStuIDAndHomeId(stu_id, homew.getId());
+            if (byStuIDAndHomeId!=null)
+                json.setWorkStatu("已交");
+            else
+                json.setWorkStatu("<span style='color:red;'>未交</span>");
+            jsons.add(json);
+        }
+        System.out.println(jsons);
+//        List<Twork> byStuID = tworkService.findByStuID(stu_id);
+//        System.out.println(byStuID);
+        return jsons;
+    }
 
 
 }

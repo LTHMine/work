@@ -15,4 +15,5 @@ public interface HomewService {
     PageResult findPage(PageRequest pageRequest,String sort);
     List<Homew> findByCatePost(Integer category);
     void insertHomew(Homew homew);
+    List<Homew> findByUse();
 }

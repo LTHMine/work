@@ -15,5 +15,6 @@ public interface HomewMapper {
     List<Homew> findAll();
     List<Homew> findPage( @Param("sort") String sort);
     List<Homew> findByCatePost(Integer category);
+    List<Homew> findByUse();
     void insertHomew(Homew homew);
 }

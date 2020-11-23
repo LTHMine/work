@@ -24,8 +24,8 @@ public class TworkServiceImpl implements TworkService {
     }
 
     @Override
-    public List<Twork> findByStuID(Integer StuID) {
-        return null;
+    public Twork findByStuIDAndHomeId(Integer StuID,Integer homeid) {
+        return tworkMapper.findByStuIDAndHomeId(StuID,homeid);
     }
 
     @Override

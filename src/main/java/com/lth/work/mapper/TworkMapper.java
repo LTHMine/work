@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface TworkMapper {
     void insert(Twork twork);
-    List<Twork> findByStuID(Integer StuID);
+    Twork findByStuIDAndHomeId(Integer StuID,Integer homeid);
     List<Twork> findByName(String name);
     List<Twork> findByCate(Integer category);
 

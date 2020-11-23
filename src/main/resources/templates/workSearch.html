@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>网络安全 作业</title>
+    <title>作业状态查询</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/layui.css"  media="all">
     <link rel="stylesheet" href="index.css"  media="all">
@@ -11,7 +11,7 @@
 
 
 <body id="body" οnscrοll=SetCookie("scroll",body.scrollTop); οnlοad="scrollback();">
-<!--<a href="/literature/VM15.5/SN.txt"-->
+<!--<a href="/literature/test.txt"-->
 <!--   download="w3logo"-->
 <!--&gt;123123</a>-->
 <!--导航-->
@@ -48,26 +48,22 @@
                     <li class=""><a href="/tableFile">作业(资源)下载</a></li>
                 </ul>
             </div>
-            <!--        作业表单-->
+
+            <!--查询表单-->
             <div class="layui-col-md10">
                 <fieldset>
                     <legend>
-                        <span>网络安全 作业</span>
+                        <span>作业状态 查询</span>
                     </legend>
                 </fieldset>
-                <form target="hidden" id="form_s" lay-filter="test" enctype=multipart/form-data class="layui-form" method="post" action="/formSubmit">
-                    <iframe name="hidden" style="display:none;"></iframe>
-                    <input type="hidden" id="category" name="category" value="3"></input>
+                <form  class="layui-form" method="post">
                     <input type="hidden" id="stu_idd" name="stu_idd" value="0"></input>
-                    <input type="hidden" id="file_sta" name="file_sta" value="0"></input>
-
                     <div class="layui-form-item">
                         <label class="layui-form-label">学号</label>
                         <div class="layui-input-inline">
                             <select id="stu_id" name="stu_id" lay-verify="required" lay-search lay-filter="stu_id" >
                                 <option></option>
                                 <option th:value="${stu_id}" th:each="stu_id:${stu_idList}" th:text="${{stu_id}}"></option>
-
                             </select>
                         </div>
                         <label class="layui-form-label">姓名</label>
@@ -81,52 +77,16 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">章节</label>
-                        <div class="layui-input-inline">
-
-                            <select id="workL" name="workL">
-                                <option th:each="work_s:${work_list}" th:value="${work_s.id}" th:text="${work_s.homework}"></option>
-                            </select>
-
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">作业难易度</label>
                         <div class="layui-input-block">
-                            <input type="radio" name="difficulty" value="1" title="简单">
-                            <input type="radio" name="difficulty" value="2" title="正常" checked>
-                            <input type="radio" name="difficulty" value="3" title="难">
+                            <button type="button" id="FormAction" class="layui-btn" onclick="searchStu()" lay-filter="formDemo">立即查询</button>
                         </div>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">上传</label>
-                        <div id="submitbtngroup"  class="layui-input-inline" style="width: auto;">
-                        </div>
-                    </div>
+                        <div class="layui-input-block" >
+                            <table id="result"  class="layui-table" style="width: 500px">
 
-                    <div class="layui-form-item upList">
-                        <div class="layui-card" style="border-color: #e6e6e6;border-width: 1px;border-style: solid;background-color: #fff;border-radius: 2px;">
-                            <div class="layui-card-header">已选择文件
-                            </div>
-                            <div class="layui-card-body" >
-                                <span id="filename" name="filename">未选择任何文件</span>
-                                <button type="button" onclick="setImgitemClick()"  id="delet_file" class="layui-btn layui-btn-sm layui-btn-danger" style="position: absolute;right: 4px;top: 6px;">删除</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label">备注</label>
-                        <div class="layui-input-block">
-                            <textarea name="beiz" placeholder="请输入内容" class="layui-textarea beizhu"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <!--                        <button lay-submit   id="FormAction" class="layui-btn"  lay-filter="formDemo">立即提交</button>-->
-                            <button type="button" id="FormAction" class="layui-btn" onclick="sub()" lay-filter="formDemo">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </table>
                         </div>
                     </div>
                 </form>
@@ -147,9 +107,8 @@
 
 
 <script src="layui.js" charset="utf-8"></script>
-<script src="index.js" charset="utf-8"></script>
+<script src="search.js" charset="utf-8"></script>
 <script>
-
 </script>
 </body>
 

@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
+    <title>Python 作业</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/layui.css"  media="all">
     <link rel="stylesheet" href="index.css"  media="all">
+    <link rel="dns-prefetch" href="http://cdn.staticfile.org/">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
     <script src="/lib/L2Dwidget.min.js"></script>
 </head>
 
 
 <body id="body" οnscrοll=SetCookie("scroll",body.scrollTop); οnlοad="scrollback();">
-<!--<a href="/literature/VM15.5/SN.txt"-->
-<!--   download="w3logo"-->
-<!--&gt;123123</a>-->
-<!--导航-->
+
 <header>
 <ul class="layui-nav lthul" lay-filter="">
     <li class="layui-nav-item"><a href="#" style="    color: #0C0C0C; "><img class="CCSU-icon" src="img/logo_1.png"></a></li>
@@ -44,6 +44,7 @@
                 <li class=""><a href="/index">Python 作业</a></li>
                 <li class=""><a href="/webWork">Web 作业</a></li>
                 <li class=""><a href="/netSecurity">网络安全 作业</a></li>
+                <li class=""><a href="/workSearch">作业状态 查询</a></li>
                 <li class=""><a href="/tableFile">作业(资源)下载</a></li>
             </ul>
         </div>
@@ -90,21 +91,6 @@
                     </div>
 
 
-<!--                    <label class="layui-form-label">作业下载</label>-->
-<!--                    <div class="layui-input-inline">-->
-<!--                        <table class="layui-hide" id="file" lay-filter="file">-->
-<!--                       <a href="/literature/第五章作业.docx" download="第五章作业.docx">-->
-<!--                           <button id="down" type="button" class="layui-btn"-->
-<!--                                 >-->
-<!--                            <i class="layui-icon">&#xe601;</i>下载作业-->
-
-<!--                            &lt;!&ndash;<a href="/literature/VM15.5/SN.txt"&ndash;&gt;-->
-<!--                            &lt;!&ndash;   download="w3logo"&ndash;&gt;-->
-<!--                            &lt;!&ndash;&gt;123123</a>&ndash;&gt;-->
-<!--                            </button>-->
-<!--                       </a>-->
-<!--                        </table>-->
-<!--                    </div>-->
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">作业难易度</label>
@@ -118,10 +104,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">上传</label>
                     <div id="submitbtngroup"  class="layui-input-inline" style="width: auto;">
-<!--                        <button id="upl" lay-verify="" type="button"-->
-<!--                                class="layui-btn load" lay-data="{url: '/upload', accept: 'file', exts:'doc|docx|pdf' }" >-->
-<!--                            <i class="layui-icon">&#xe67c;</i>选择文件-->
-<!--                        </button>-->
+
 
                     </div>
                 </div>
@@ -158,8 +141,7 @@
 </div>
 
 <div id="cc">
-    <script>
-        L2Dwidget.init({
+    <script>L2Dwidget.init({
             model: { jsonPath: "/assets/asuna_04.model.json" }
         });
     </script>

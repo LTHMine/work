@@ -36,5 +36,8 @@
     <select id="findByCatePost" resultType="com.lth.work.pojo.Homew">
         select * from homework where category=#{category} and home_status=1
     </select>
+    <select id="findByUse" resultType="com.lth.work.pojo.Homew">
+        select * from homework where home_status = 1;
+    </select>
 
 </mapper>
